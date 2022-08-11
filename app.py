@@ -36,7 +36,8 @@ gss_clean = gss_clean.rename({'wtss':'weight',
                               'meovrwrk':'men_overwork'},axis=1)
 gss_clean.age = gss_clean.age.replace({'89 or older':'89'})
 gss_clean.age = gss_clean.age.astype('float')
-markdown_text = "This is my text"
+markdown_text = "   According to 2018 Census Bureau data, women on average earn 82 cents for every dollar men earn. The wage gap is even larger for women of color. There are several factors that may contribute to this. Many jobs that are predominately women, such as teaching and nursing, have lower pay than male dominated jobs of equal prestige. Additionally, women often unpaid obligations such as childcare and caregiving that may prevent them from working as many hours or gaining as many years of experience than men. Discrimination in the workforce on the basis of gender still exists. (https://www.americanprogress.org/article/quick-facts-gender-wage-gap/) Common practices such as preventing employees from discussing their pay or using an employees salary history to set their current income only contribute to this gap. Even after leaving the workforce, this disparity continues to effect women. On average, women only have 70% of the total retirement income that men do from programs such as Social Security and pensions. (https://www.aauw.org/resources/research/simple-truth/)" 
+markdown_text2 = "The General Social Survey (GSS) is a survey that records the opinions of Americans on issues in modern society. It was first conducted in 1972. Most of the GSS is composed of demographic, behavioral, and attitudinal questions, but there are also questions of special interest. Potential participants are contacted by email or mail. The GSS is a full-probability, personal-interview survey and allows researchers to monitor changes in the attitudes and values of Americans over time. (https://gss.norc.org/About-The-GSS) "
 rel_gend2 = gss_clean.groupby(['sex'])\
 .agg({'income':'mean', 'job_prestige':'mean', 'socioeconomic_index':'mean', 'education':'mean'}).reset_index()
 rel_gend2 = round(rel_gend2,2).rename({'income':'Mean Income','job_prestige':'Mean Job Prestige Score',
@@ -89,6 +90,8 @@ app.layout = html.Div(
         html.H1("Gender Disparities in Jobs and Income"),  
         
         dcc.Markdown(children = markdown_text),
+      
+        dcc.Markdown(children = markdown_text2),
         
         html.H2("Distribution of Wealth, Job Prestige, and Education by Gender"),
         

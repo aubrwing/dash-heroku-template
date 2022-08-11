@@ -83,7 +83,7 @@ fig_bar.update_layout(showlegend=False)
 fig_bar.for_each_annotation(lambda a: a.update(text=a.text.replace("cat_job_prestige=", "")))
 #html.H1("Opinion of Males as Breadwinners by Gender")
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
+server = app.server
 app.layout = html.Div(
     [
         html.H1("Gender Disparities in Jobs and Income"),  

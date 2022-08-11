@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import dash
-from jupyter_dash import JupyterDash
+#from jupyter_dash import JupyterDash
 #import dash_core_components as dcc
 from dash import dcc
 #import dash_html_components as html
@@ -84,7 +84,7 @@ fig_bar = px.box(gss_new, x='income', y='sex', color='sex',
 fig_bar.update_layout(showlegend=False)
 fig_bar.for_each_annotation(lambda a: a.update(text=a.text.replace("cat_job_prestige=", "")))
 #html.H1("Opinion of Males as Breadwinners by Gender")
-app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(
     [
@@ -119,4 +119,4 @@ app.layout = html.Div(
 )
 
 if __name__ == '__main__':
-    app.run_server(mode='inline', debug=True, port=8050)
+    app.run_server(debug=True)
